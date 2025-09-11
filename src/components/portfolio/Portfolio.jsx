@@ -5,28 +5,35 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 const items = [
   {
     id: 1,
-    title: "React Commerce",
+    title: "💻 Software Development Services",
     img: "https://images.pexels.com/photos/18073372/pexels-photo-18073372/free-photo-of-young-man-sitting-in-a-car-on-a-night-street.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    desc: "Web Development (Full-stack, Frontend, Backend) Mobile App Development (Android, iOS, Cross-platform with React Native) Desktop Application Development (Windows, Linux, macOS)   API Development & Integration (REST, GraphQL, third-party APIs)   Custom Software Solutions (tailored apps for businesses, e.g., inventory, POS, CRM)"
   },
-  {
+    {
     id: 2,
-    title: "Next.js Blog",
+    title: "🌐 Cloud & Systems",
     img: "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    desc: " Cloud Deployment & Management (AWS, Azure, GCP, DigitalOcean) DevOps & CI/CD (automation, Docker, Kubernetes, GitHub Actions, GitLab CI) Database Design & Optimization (SQL, NoSQL, Firebase, MongoDB, PostgreSQL) System Architecture Design (scalable, secure, and modular systems)",
   },
   {
     id: 3,
-    title: "Vanilla JS App",
+    title: "🎨 UI/UX & Frontend",
     img: "https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-  },
+    desc: "Responsive Website Design (HTML, CSS, JavaScript, Tailwind, Bootstrap)              UI/UX Prototyping (Figma, Adobe XD, wireframes & mockups)              Interactive Dashboards (data visualization with charts, graphs, maps)              Performance Optimization (fast-loading, SEO-friendly apps)" },
   {
     id: 4,
-    title: "Music App",
+    title: "📊 Data & AI",
     img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    desc: "Data Analysis & Visualization (Python, Pandas, Power BI, Tableau)              Machine Learning & AI Solutions (recommendation systems, predictive models)              Automation Tools & Scripts (task automation with Python, bots, scrapers)",
   },
+
+  {
+    id: 4,
+    title: "🛠️ Consulting & Support",
+    img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    desc: " IT Support & Troubleshooting (remote and onsite)              Software Project Consulting (requirements gathering, system planning)              Code Review & Optimization              Technical Documentation & Training",
+  },
+
 ];
 
 const Single = ({ item }) => {
@@ -48,7 +55,7 @@ const Single = ({ item }) => {
           <motion.div className="textContainer" style={{y}}>
             <h2>{item.title}</h2>
             <p>{item.desc}</p>
-            <button>See Demo</button>
+            {/* <button>See Demo</button> */}
           </motion.div>
         </div>
       </div>

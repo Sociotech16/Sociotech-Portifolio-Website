@@ -13,20 +13,20 @@ const Navbar = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          Lama Dev
+          SOCIOTECH
         </motion.span>
         <div className="social">
-          <a href="#">
+          <a href="https://www.facebook.com/share/15YPxCcE88/">
             <img src="/facebook.png" alt="" />
           </a>
-          <a href="#">
+          <a href="https://www.instagram.com/sociotech.co?igsh=MWF3ZWZ0eXFwbWhhbw==">
             <img src="/instagram.png" alt="" />
           </a>
-          <a href="#">
-            <img src="/youtube.png" alt="" />
+          <a href="https://www.linkedin.com/in/danielias-danaishe-bhidhi-2a4621237?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+            <img src="/linkedin.png" alt="" />
           </a>
-          <a href="#">
-            <img src="/dribbble.png" alt="" />
+          <a href="https://github.com/Sociotech16">
+            <img src="/github.png" alt="" />
           </a>
         </div>
       </div>
