@@ -31,10 +31,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_94y20xo",
-        "template_v10u2oh",
+        "service_nvq1lr4",
+        "template_hxz5gyx",
         formRef.current,
-        "pX_2hasGmGcuvjXIW"
+        "62gEoL2XkbXa2kjNs"
       )
       .then(
         (result) => {
