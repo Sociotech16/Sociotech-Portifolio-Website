@@ -1,14 +1,18 @@
-import Test from "./Test";
 import "./app.scss";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/cursor/Cursor";
 import Hero from "./components/hero/Hero";
 import Navbar from "./components/navbar/Navbar";
 import Parallax from "./components/parallax/Parallax";
-import Portfolio from "./components/portfolio/Portfolio";
-import Services from "./components/services/Services";
-
+import Services from "./components/services/Services.jsx";
+import Projects from "./components/projects/Projects.jsx";
+import Loader from "./components/Loader";
+import { useState } from "react";
 const App = () => {
+  const [loaded, setLoaded] = useState(false);
+
+  if (!loaded) return <Loader onLoaded={() => setLoaded(true)} />;
+
   return (
     <div>
       <Cursor />
@@ -17,26 +21,22 @@ const App = () => {
         <Hero />
       </section>
 
-      <section id="Portfolio">
-        <Parallax type="portfolio" />
-      </section>
-      <Portfolio />
-      
       <section id="Services">
-        <Parallax type= "services"/>
+        <Parallax type="services" />
+      </section>
+      <Services />
+      
+      <section id="Projects">
+        <Parallax type= "projects"/>
       </section>
       <section>
-        <Services />
+        <Projects />
       </section>
 
       
       <section id="Contact">
         <Contact />
       </section>
-      
-      {/* Framer Motion Crash Course */}
-      {/* <Test/>
-    <Test/> */}
     </div>
   );
 };

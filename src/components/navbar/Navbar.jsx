@@ -6,14 +6,16 @@ const Navbar = () => {
   return (
     <div className="navbar">
       {/* Sidebar */}
-      <Sidebar/>
+      
       <div className="wrapper">
+        
+      <Sidebar/>
         <motion.span
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          SOCIOTECH
+          <h1><i>SOCIOTECH</i></h1>
         </motion.span>
         <div className="social">
           <a href="https://www.facebook.com/share/15YPxCcE88/">
@@ -27,6 +29,9 @@ const Navbar = () => {
           </a>
           <a href="https://github.com/Sociotech16">
             <img src="/github.png" alt="" />
+          </a>
+          <a href="https://wa.me/263786176524">
+            <img src="public/download.png" alt="" />
           </a>
         </div>
       </div>

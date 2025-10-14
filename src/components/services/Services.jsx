@@ -1,92 +1,97 @@
-import { useRef } from "react";
+// Services.jsx
+import React, { useRef } from "react";
 import "./services.scss";
-import { motion, useInView } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
-const variants = {
-  initial: {
-    x: -500,
-    y: 100,
-    opacity: 0,
+const items = [
+  {
+    id: 1,
+    title: "💻 Software Development Services",
+    img: "/1714365712627.jpeg",
+    desc:
+      "Web Development (Full-stack, Frontend, Backend) Mobile App Development (Android, iOS, Cross-platform with React Native) Desktop Application Development (Windows, Linux, macOS) API Development & Integration (REST, GraphQL, third-party APIs) Custom Software Solutions (tailored apps for businesses, e.g., inventory, POS, CRM)",
   },
-  animate: {
-    x: 0,
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1,
-      staggerChildren: 0.1,
-    },
+  {
+    id: 2,
+    title: "🎨 UI/UX & Frontend",
+    img: "public/images (1).jpeg",
+    desc:
+      "Responsive Website Design (HTML, CSS, JavaScript, Tailwind, Bootstrap) UI/UX Prototyping (Figma, Adobe XD, wireframes & mockups) Interactive Dashboards (data visualization with charts, graphs, maps) Performance Optimization (fast-loading, SEO-friendly apps)",
   },
+  {
+    id: 3,
+    title: "🌐 Cloud & Systems",
+    img: "public/download.jpeg",
+    desc:
+      "Cloud Deployment & Management (AWS, Azure, GCP, DigitalOcean) DevOps & CI/CD (automation, Docker, Kubernetes, GitHub Actions, GitLab CI) Database Design & Optimization (SQL, NoSQL, Firebase, MongoDB, PostgreSQL) System Architecture Design (scalable, secure, and modular systems)",
+  },
+  {
+    id: 4,
+    title: "📊 Data & AI",
+    img: "public/images (2).jpeg",
+    desc:
+      "Data Analysis & Visualization (Python, Pandas, Power BI, Tableau) Machine Learning & AI Solutions (recommendation systems, predictive models) Automation Tools & Scripts (task automation with Python, bots, scrapers)",
+  },
+  {
+    id: 5,
+    title: "🛠️ Consulting & Support",
+    img: "public/download (1).jpeg",
+    desc:
+      "IT Support & Troubleshooting (remote and onsite) Software Project Consulting (requirements gathering, system planning) Code Review & Optimization Technical Documentation & Training",
+  },
+];
+
+const Single = ({ item }) => {
+  const ref = useRef();
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+
+  return (
+    // each item is a real <section> (scroll targets)
+    <section className="services-section" data-scroll-section>
+      <div className="container">
+        <div className="wrapper">
+          <div className="imageContainer" ref={ref}>
+            <img src={item.img} alt={item.title} />
+          </div>
+          <motion.div className="textContainer" style={{ y }}>
+            <h2>{item.title}</h2>
+            <p>{item.desc}</p>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 const Services = () => {
   const ref = useRef();
 
-  const isInView = useInView(ref, { margin: "-100px" });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["end end", "start start"],
+  });
+
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+  });
 
   return (
-    <motion.div
-      className="services"
-      variants={variants}
-      initial="initial"
-      // animate="animate"
-      // whileInView="animate"
-      ref={ref}
-      animate={"animate"}
-    >
-      <motion.div className="textContainer" variants={variants}>
-        <p>
-          I focus on helping your brand grow
-          <br /> and move forward
-        </p>
-        <hr />
-      </motion.div>
-      <motion.div className="titleContainer" variants={variants}>
-        <div className="title">
-          <img src="/people.webp" alt="" />
-          <h1>
-            <motion.b whileHover={{color:"orange"}}>Unique</motion.b> Ideas
-          </h1>
-        </div>
-        <div className="title">
-          <h1>
-            <motion.b whileHover={{color:"orange"}}>For Your</motion.b> Business.
-          </h1>
-          <button>WHAT WE DID?</button>
-        </div>
-      </motion.div>
-      <motion.div className="listContainer" variants={variants}>
-        <motion.div
-          className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>💧 Smart Water Management Dashboard</h2>
-          <p> A modular web-based system designed to monitor and control three interconnected water tanks and four solenoid valves. Features include valve controls, live tank level displays, water usage analytics, and activity trends. The system improves resource efficiency and decision-making through intuitive dashboards and data visualization.</p>
-          {/* <button>Go</button> */}
-        </motion.div>
+    // top-level Services container has id "Services" so Hero.handleClick("Services") works
+    <div className="services" id="services" ref={ref} data-scroll-section>
+    
+      {items.map((item) => (
+        <Single item={item} key={item.id} />
+      ))}
 
-        <motion.div
-          className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>🔥 Aerial Firefighting & Emergency Response App</h2>
-          <p> A mobile application built to support firefighting in remote areas of Zimbabwe. The app provides real-time fire mapping, offline support, weather updates, team communication tools, and resource management. It also includes a simulation mode for training teams, ensuring readiness in critical scenarios where connectivity and power are limited.</p>
-           {/* <button>Go</button> */}
-        </motion.div>
-
-        <motion.div
-          className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>📱 InteRez – Smart Dating Application</h2>
-          <p>A modern React Native dating app designed to enhance social connections through personalized recommendations. Features include a daily picks carousel, smart matches grid, profile modals with animations, advanced filters, and real-time chat functionality. The app integrates Firebase for backend services and supports infinite scroll for a smooth user experience.</p>
-           {/* <button>Go</button> */}
-        </motion.div>
-
-
-
-      </motion.div>
-    </motion.div>
+      {/* Optional: progress bar (uses scaleX) */}
+      <motion.div className="scroll-progress" style={{ scaleX }} />
+    </div>
   );
 };
 
