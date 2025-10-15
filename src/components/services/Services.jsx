@@ -14,28 +14,28 @@ const items = [
   {
     id: 2,
     title: "🎨 UI/UX & Frontend",
-    img: "public/images (1).jpeg",
+    img: "/images (1).jpeg",
     desc:
       "Responsive Website Design (HTML, CSS, JavaScript, Tailwind, Bootstrap) UI/UX Prototyping (Figma, Adobe XD, wireframes & mockups) Interactive Dashboards (data visualization with charts, graphs, maps) Performance Optimization (fast-loading, SEO-friendly apps)",
   },
   {
     id: 3,
     title: "🌐 Cloud & Systems",
-    img: "public/download.jpeg",
+    img: "/download.jpeg",
     desc:
       "Cloud Deployment & Management (AWS, Azure, GCP, DigitalOcean) DevOps & CI/CD (automation, Docker, Kubernetes, GitHub Actions, GitLab CI) Database Design & Optimization (SQL, NoSQL, Firebase, MongoDB, PostgreSQL) System Architecture Design (scalable, secure, and modular systems)",
   },
   {
     id: 4,
     title: "📊 Data & AI",
-    img: "public/images (2).jpeg",
+    img: "/images (2).jpeg",
     desc:
       "Data Analysis & Visualization (Python, Pandas, Power BI, Tableau) Machine Learning & AI Solutions (recommendation systems, predictive models) Automation Tools & Scripts (task automation with Python, bots, scrapers)",
   },
   {
     id: 5,
     title: "🛠️ Consulting & Support",
-    img: "public/download (1).jpeg",
+    img: "/download (1).jpeg",
     desc:
       "IT Support & Troubleshooting (remote and onsite) Software Project Consulting (requirements gathering, system planning) Code Review & Optimization Technical Documentation & Training",
   },

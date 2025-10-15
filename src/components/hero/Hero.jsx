@@ -10,9 +10,9 @@ const textVariants = {
     transition: { duration: 1, staggerChildren: 0.1 },
   },
   scrollButton: {
-    opacity: 0,
-    y: 10,
-    transition: { duration: 2, repeat: Infinity },
+    opacity: [1, 0.5, 1],
+    y: [0, 10, 0],
+    transition: { duration: 2, repeat: Infinity, ease: "easeInOut" },
   },
 };
 
@@ -25,27 +25,16 @@ const sliderVariants = {
 };
 
 const Hero = () => {
-  // Section buttons at the top
   const pages = [
-    { id: "Portfolio", label: "Our Services" },
+    { id: "Services", label: "Our Services" },
     { id: "Contact", label: "Contact Us" },
   ];
 
-  // Handle button click (scrolls smoothly to the section)
-  const handleClick = (id) => {
+  // Smooth scroll function
+  const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      const top = section.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  };
-
-  // Scroll button goes directly to Portfolio
-  const handleScrollButtonClick = () => {
-    const portfolioSection = document.getElementById("Portfolio");
-    if (portfolioSection) {
-      const top = portfolioSection.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top, behavior: "smooth" });
+      section.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -61,44 +50,58 @@ const Hero = () => {
           <motion.h1 variants={textVariants}>DANIELIAS D BHIDHI</motion.h1>
           <motion.h2 variants={textVariants}>Software Engineer</motion.h2>
 
-          {/* Navigation buttons */}
+          {/* Navigation Buttons */}
           <motion.div variants={textVariants} className="buttons">
             {pages.map((page) => (
               <motion.button
                 key={page.id}
-                onClick={() => handleClick(page.id)}
+                onClick={() => scrollToSection(page.id)}
                 variants={textVariants}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {page.label}
               </motion.button>
             ))}
           </motion.div>
 
-          {/* Scroll button */}
-          <div>
-            <motion.img
-              variants={textVariants}
-              animate="scrollButton"
-              src="/scroll.png"
-              alt="scroll indicator"
-              style={{ cursor: "pointer" }}
-              onClick={handleScrollButtonClick}
-            />
-          </div>
+          {/* Scroll-down image button */}
+          <button 
+          onClick={() => scrollToSection("Services")}
+            className="transparent-bg"
+          >
+          <motion.img
+            variants={textVariants}
+            animate="scrollButton"
+            src="/scroll.png"
+            alt="Scroll down"
+            className="scroll-icon"
+            style={{ cursor: "pointer", marginTop: "2rem" }}
+            
+          /></button>
         </motion.div>
       </div>
-
-      {/* Sliding text animation */}
+<div >
+      {/* Sliding background text */}
       <motion.div
         className="slidingTextContainer"
         variants={sliderVariants}
         initial="initial"
         animate="animate"
+        style={{
+    cursor: "default",
+    pointerEvents: "none", // 👈 This makes it ignore mouse clicks
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+  }}
+        
       >
         SOCIOTECH
       </motion.div>
-
-      {/* Hero image */}
+</div>
+      {/* Hero Image */}
       <div className="imageContainer">
         <img src="/logo-no-background.png" alt="logo" />
       </div>

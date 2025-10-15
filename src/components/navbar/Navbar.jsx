@@ -31,7 +31,7 @@ const Navbar = () => {
             <img src="/github.png" alt="" />
           </a>
           <a href="https://wa.me/263786176524">
-            <img src="public/download.png" alt="" />
+            <img src="/downloa.png" alt="" />
           </a>
         </div>
       </div>
